@@ -4,7 +4,7 @@ A lightweight solution for video playback with [Bitwig Studio](https://www.bitwi
 
 The implementation makes use of xjadeo's OSC remote control capabilities which are documented [here](https://xjadeo.sourceforge.net/osc.html).
 
-## Setup
+## Installation
 
 1. Put the .js into the Bitwig controller script folder
 2. Add the controller script in Bitwig Studio
