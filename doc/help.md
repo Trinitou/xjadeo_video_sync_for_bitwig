@@ -1,8 +1,3 @@
-<head>
-    <title class="title">xjadeo Video Sync</title>
-    <style type="text/css" media="all">@import "./doc/help.css";</style>
-</head>
-
 # xJadeo Video Synchronization
 
 ## Setup
