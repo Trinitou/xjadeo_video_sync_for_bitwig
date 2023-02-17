@@ -14,10 +14,10 @@ if($md) {
 }
 
 $sourceDir = ".\src"
-$controlScriptPath = "xJadeo Video Sync.control.js"
-Copy-Item -Path "$sourceDir\$controlScriptPath" -Destination "$targetTempDir\$controlScriptPath"
-$launchScriptPath = "launch xjadeo.bat"
-Copy-Item -Path "$sourceDir\$launchScriptPath" -Destination "$targetTempDir\$launchScriptPath"
+$controlScriptFileName = "xJadeo Video Sync.control.js"
+Copy-Item -Path "$sourceDir\$controlScriptFileName" -Destination "$targetTempDir\$controlScriptFileName"
+$launchScriptFileName = "launch xjadeo.bat"
+Copy-Item -Path "$sourceDir\$launchScriptFileName" -Destination "$targetTempDir\$launchScriptFileName"
 
 $targetZipPath = "$PSScriptRoot\target\xJadeo_Video_Sync_" + ($version -replace '\.', '_') + ".zip"
 $compress = @{
