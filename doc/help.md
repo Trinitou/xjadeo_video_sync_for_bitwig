@@ -24,3 +24,7 @@
   - If Bitwig supports the file format, you can drag it into the project so that.
     - Place it into the Arranger at position 1.1.1.00
     - Make sure that time-stretching is off for that audio clip (*Mode* set to *'Raw'*)
+
+## What's new?
+
+If you want to see the recent feature additions and changes, please have a look into the [changelog](./doc/changelog.html).
