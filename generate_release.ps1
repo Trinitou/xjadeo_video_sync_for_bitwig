@@ -31,8 +31,10 @@ if($docAsMarkdown && $changelogAsMarkdown) {
   $helpCssFileName = "help.css"
   Copy-Item -Path "$docSourceDir\$helpCssFileName" -Destination "$htmlResourceTargetDir\$helpCssFileName"
   # changelog HTML sub-page
+  $backLinkHtml = "<a href=`"javascript:history.back()
+  `">< Back</a>"
   $changelogHtmlHeadSection = GenerateHtmlHeadSection -Title "Changelog" -RelativeCssPath "./help.css"
-  $changelogHtmlHeadSection + $changelogAsMarkdown.Html | Out-File -Encoding utf8 "$htmlResourceTargetDir\changelog.html"
+  $changelogHtmlHeadSection + $backLinkHtml + $changelogAsMarkdown.Html | Out-File -Encoding utf8 "$htmlResourceTargetDir\changelog.html"
 }
 
 $sourceDir = ".\src"
