@@ -8,11 +8,11 @@ The implementation makes use of XJadeo's OSC remote control capabilities which a
 
 1. Put the .js into the Bitwig controller script folder
 2. Add the controller script in Bitwig Studio
-    - via *Dashboard -> 'Settings' -> 'Controllers' -> '+ Add Controller'*
-    - select hardware vendor: 'XJadeo'
-    - select product: 'XJadeo Video Sync'
-    - click *'Add'*
-3. Click the "?" icon and follow the setup instructions in the help HTML
+    - via the Dashboard -> *Settings* -> *Controllers* -> *+ Add Controller*
+    - select hardware vendor: *XJadeo*
+    - select product: *XJadeo Video Sync*
+    - click *Add*
+3. Click the *(?)* button and follow the setup instructions in the help HTML
 
 ## Build
 
