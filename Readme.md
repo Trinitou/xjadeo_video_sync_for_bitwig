@@ -1,16 +1,16 @@
-# Video playback for Bitwig Studio using xjadeo.
+# Video playback for Bitwig Studio using XJadeo.
 
-A lightweight solution for video playback with [Bitwig Studio](https://www.bitwig.com/de/overview/) using [xjadeo](https://xjadeo.sourceforge.net). A video file can be added per Bitwig project which then will be played back in sync with Bitwig's transport. Also the video will be saved and opened together with the project automatically.
+A lightweight solution for video playback with [Bitwig Studio](https://www.bitwig.com/de/overview/) using [XJadeo](https://xjadeo.sourceforge.net). A video file can be added per Bitwig project which then will be played back in sync with Bitwig's transport. Also the video will be saved and opened together with the project automatically.
 
-The implementation makes use of xjadeo's OSC remote control capabilities which are documented [here](https://xjadeo.sourceforge.net/osc.html).
+The implementation makes use of XJadeo's OSC remote control capabilities which are documented [here](https://xjadeo.sourceforge.net/osc.html).
 
 ## Installation
 
 1. Put the .js into the Bitwig controller script folder
 2. Add the controller script in Bitwig Studio
     - via *Dashboard -> 'Settings' -> 'Controllers' -> '+ Add Controller'*
-    - select hardware vendor: 'xjadeo'
-    - select product: 'xJadeo Video Sync'
+    - select hardware vendor: 'XJadeo'
+    - select product: 'XJadeo Video Sync'
     - click *'Add'*
 3. Click the "?" icon and follow the setup instructions in the help HTML
 
