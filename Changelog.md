@@ -3,6 +3,7 @@
 ## Added
 
 - project-specific 'Loop' setting for looped video playback
+- link to the [github releases page](https://github.com/Trinitou/xjadeo_video_sync_for_bitwig/releases) in the help doc
 
 # Changes in 0.1.1
 
