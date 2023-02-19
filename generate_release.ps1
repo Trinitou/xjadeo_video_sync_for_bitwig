@@ -42,8 +42,8 @@ $controlScriptFileName = "XJadeo Video Sync.control.js"
 Copy-Item -Path "$sourceDir\$controlScriptFileName" -Destination "$targetTempDir\$controlScriptFileName"
 $launchScriptFileName = "launch XJadeo.bat"
 Copy-Item -Path "$sourceDir\$launchScriptFileName" -Destination "$targetTempDir\$launchScriptFileName"
-$controlScriptFileName = "LICENSE"
-Copy-Item -Path "$rootDir\$controlScriptFileName" -Destination "$targetTempDir\$controlScriptFileName"
+$licenseFileName = "LICENSE"
+Copy-Item -Path "$rootDir\$licenseFileName" -Destination "$targetTempDir\$licenseFileName"
 
 $targetZipPath = "$PSScriptRoot\target\XJadeo_Video_Sync_" + ($version -replace '\.', '_') + ".zip"
 $compress = @{
