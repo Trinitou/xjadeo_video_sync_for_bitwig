@@ -1,3 +1,9 @@
+# Changes in 0.2
+
+## Added
+
+- project-specific 'Loop' setting for looped video playback
+
 # Changes in 0.1.1
 
 ## Added
@@ -9,7 +15,7 @@
 
 - consistently call it 'XJadeo' instead of 'xjadeo' or 'xJadeo'
 
-# Changes in 0.1.0
+# Changes in 0.1
 
 ## Added
 
