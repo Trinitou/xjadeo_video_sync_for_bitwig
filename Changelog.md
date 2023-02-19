@@ -5,6 +5,10 @@
 - this changelog
 - LICENSE is now included into release zip automatically.
 
+## Changed
+
+- consistently call it 'XJadeo' instead of 'xjadeo' or 'xJadeo'
+
 # Changes in 0.1.0
 
 ## Added
