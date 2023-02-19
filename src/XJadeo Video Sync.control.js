@@ -47,15 +47,29 @@ function updateFrame(frame) {
    }
 }
 
+var lastLoopState;
+function invalidateLastLoopState() {
+   lastLoopState = null;
+}
+function updateLoop(loop) {
+   if(loop == lastLoopState)
+      return;
+   oscConnection.sendMessage("/jadeo/art/loop", loop ? 1 : 0);
+   lastLoopState = loop;
+   host.println("Sent 'Loop' state: " + (loop ? "on" : "off"));
+}
+
 function invalidateAll() {
    invalidateLastOnTopState();
    invalidateLastVideoPath();
    invalidateLastFrame();
+   invalidateLastLoopState();
 }
 
 var onTopSetting;
 var pathSetting;
 var frameRateSetting;
+var loopSetting;
 var pos;
 
 function init() {   
@@ -73,6 +87,9 @@ function init() {
 
    frameRateSetting = docState.getNumberSetting("FPS", "File", 24, 60, 0.01, "", 24);
    frameRateSetting.markInterested();
+
+   loopSetting = docState.getBooleanSetting("Loop", "File", false);
+   loopSetting.markInterested();
 
    // add flush command to both the preferences and document state for easy access:
    let settings = [prefs, docState];
@@ -95,6 +112,7 @@ function flush() {
    if (updateVideo(pathSetting.get()))
       invalidateLastFrame();
    updateFrame(Math.floor(pos.get() * frameRateSetting.getRaw()));
+   updateLoop(loopSetting.get());
 }
 
 function exit() {

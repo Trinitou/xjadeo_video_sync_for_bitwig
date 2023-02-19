@@ -9,6 +9,7 @@
   - In the *Studio I/O panel*, unfold the *XJadeo Video Sync* settings.
     - Enter the absolute video file path under *Path*.
     - Enter the original frame rate of the video under *Frame rate*.
+    - For looped video playback, activate the *Loop* checkbox
 
 ## Features
 - If you save the project and open it later, the video will be opened again together with the project.
