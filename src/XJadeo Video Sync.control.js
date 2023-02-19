@@ -2,7 +2,7 @@ loadAPI(17);
 
 host.setShouldFailOnDeprecatedUse(true);
 
-host.defineController("xjadeo", "xJadeo Video Sync", "0.1.1", "295c10cb-b8d6-416b-9be5-dc2375936ac0", "Trinitou");
+host.defineController("XJadeo", "XJadeo Video Sync", "0.1.1", "295c10cb-b8d6-416b-9be5-dc2375936ac0", "Trinitou");
 
 var oscConnection;
 
@@ -87,7 +87,7 @@ function init() {
 
    invalidateAll();
 
-   println("xJadeo Connect initialized!");
+   println("XJadeo Video Sync initialized!");
 }
 
 function flush() {

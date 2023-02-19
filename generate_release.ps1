@@ -22,8 +22,8 @@ $rootDir = "."
 $changelogAsMarkdown = ConvertFrom-Markdown -Path "$rootDir\Changelog.md"
 if($docAsMarkdown && $changelogAsMarkdown) {
   # main HTML
-  $docHtmlHeadSection = GenerateHtmlHeadSection -Title "xjadeo Video Sync" -RelativeCssPath "./doc/help.css"
-  $docHtmlHeadSection + $docAsMarkdown.Html | Out-File -Encoding utf8 "$targetTempDir\xJadeo Video Sync.html"
+  $docHtmlHeadSection = GenerateHtmlHeadSection -Title "XJadeo Video Sync" -RelativeCssPath "./doc/help.css"
+  $docHtmlHeadSection + $docAsMarkdown.Html | Out-File -Encoding utf8 "$targetTempDir\XJadeo Video Sync.html"
   # HTML resource directory
   $htmlResourceTargetDir = "$targetTempDir\doc"
   New-Item -ItemType Directory -Force -Path "$htmlResourceTargetDir"
@@ -38,14 +38,14 @@ if($docAsMarkdown && $changelogAsMarkdown) {
 }
 
 $sourceDir = ".\src"
-$controlScriptFileName = "xJadeo Video Sync.control.js"
+$controlScriptFileName = "XJadeo Video Sync.control.js"
 Copy-Item -Path "$sourceDir\$controlScriptFileName" -Destination "$targetTempDir\$controlScriptFileName"
-$launchScriptFileName = "launch xjadeo.bat"
+$launchScriptFileName = "launch XJadeo.bat"
 Copy-Item -Path "$sourceDir\$launchScriptFileName" -Destination "$targetTempDir\$launchScriptFileName"
 $controlScriptFileName = "LICENSE"
 Copy-Item -Path "$rootDir\$controlScriptFileName" -Destination "$targetTempDir\$controlScriptFileName"
 
-$targetZipPath = "$PSScriptRoot\target\xJadeo_Video_Sync_" + ($version -replace '\.', '_') + ".zip"
+$targetZipPath = "$PSScriptRoot\target\XJadeo_Video_Sync_" + ($version -replace '\.', '_') + ".zip"
 $compress = @{
     Path = "$targetTempDir\*"
     CompressionLevel = "Fastest"
