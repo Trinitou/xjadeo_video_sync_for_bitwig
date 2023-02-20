@@ -2,7 +2,9 @@
 
 ## Added
 
-- project-specific 'Loop' setting for looped video playback
+- new project-specific timing settings [#2]
+  - *Offset (h)*, *Offset (min)*, *Offset (s)* for video time offset
+  - *Loop* check box for looped video playback
 - link to the [github releases page](https://github.com/Trinitou/xjadeo_video_sync_for_bitwig/releases) in the help doc
 
 # Changes in 0.1.1

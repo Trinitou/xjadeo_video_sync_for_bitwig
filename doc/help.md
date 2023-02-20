@@ -2,20 +2,26 @@
 
 ## Setup
 
-- **Download and install XJadeo**, e.g. from [here](https://xjadeo.sourceforge.net/download.html)
-- **Launch the *'launch XJadeo.bat'* script**. This opens the XJadeo window.
-- In Bitwig Studio, connect the video file for playback like this:
-  - Open a project.
-  - In the *Studio I/O panel*, unfold the *XJadeo Video Sync* settings.
-    - Enter the absolute video file path under *Path*.
-    - Enter the original frame rate of the video under *Frame rate*.
-    - For looped video playback, activate the *Loop* checkbox
+1. **Download and install XJadeo**, e.g. from [here](https://xjadeo.sourceforge.net/download.html)
+1. **Launch the *'launch XJadeo.bat'* script**. This opens the XJadeo window.
+1. In Bitwig Studio, connect the video file for playback like this:
 
-## Features
+    1. Open a project.
+    1. In the *Studio I/O panel*, unfold the *XJadeo Video Sync* settings.
+    1. Enter the absolute video file path under *Path*.
+    1. Enter the original frame rate of the video under *Frame rate*.
+
+## Features & Settings
 - If you save the project and open it later, the video will be opened again together with the project.
 - You can easily switch Bitwig project tabs with different videos and the XJadeo window will be udpated on the fly!
-- There is a *Keep on top* checkbox which will ensure that the video window stays in front of Bitwig Studio. (default: on)
-- The *Flush!* button in the settings will (re-)send all data to the XJadeo window. This is helpful if XJadeo was opened after Bitwig Studio.
+- The *Flush!* buttons in the preferences and project-specific settings will (re-)send all data to the XJadeo window. This is helpful if XJadeo was opened after Bitwig Studio.
+
+### Project-specific settings
+  - Set a timing offset using the *Offset (h/min/s)* settings, if so desired
+  - For looped video playback, activate the *Loop* checkbox
+
+### Preferences
+  - The *Keep on top* checkbox which will ensure that the video window stays in front of Bitwig Studio. (default: on)
 
 ## Tipps & tricks
 
