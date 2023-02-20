@@ -22,6 +22,7 @@
 
 ### Preferences
   - The *Keep on top* checkbox which will ensure that the video window stays in front of Bitwig Studio. (default: on)
+  - The *Time display* setting allows you to activate a *Timecode* or *Frame number* text overlay on top of the video.
 
 ## Tipps & tricks
 
