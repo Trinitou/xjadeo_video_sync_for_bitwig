@@ -43,6 +43,18 @@ function updateFrame(frame) {
    }
 }
 
+var lastFrameOffset;
+function invalidateLastFrameOffset() {
+   lastFrameOffset = null;
+}
+function updateFrameOffset(frameOffset) {
+   if (frameOffset != lastFrameOffset) {
+      oscConnection.sendMessage("/jadeo/offset", frameOffset);
+      lastFrameOffset = frameOffset;
+      host.println("Sent frame offset: " + lastFrameOffset);
+   }
+}
+
 var lastLoopState;
 function invalidateLastLoopState() {
    lastLoopState = null;
@@ -59,12 +71,16 @@ function invalidateAll() {
    invalidateLastOnTopState();
    invalidateLastVideoPath();
    invalidateLastFrame();
+   invalidateLastFrameOffset();
    invalidateLastLoopState();
 }
 
 var onTopSetting;
 var pathSetting;
 var frameRateSetting;
+var offsetHoursSetting;
+var offsetMinutesSetting;
+var offsetSecondsSetting;
 var loopSetting;
 var pos;
 
@@ -84,7 +100,14 @@ function init() {
    frameRateSetting = docState.getNumberSetting("FPS", "File", 24, 60, 0.01, "", 24);
    frameRateSetting.markInterested();
 
-   loopSetting = docState.getBooleanSetting("Loop", "File", false);
+   offsetHoursSetting = docState.getNumberSetting("Offset (h)", "Time", -24, 24, 1, "", 0.0);
+   offsetHoursSetting.markInterested();
+   offsetMinutesSetting = docState.getNumberSetting("Offset (min)", "Time", -60, 60, 1, "", 0.0);
+   offsetMinutesSetting.markInterested();
+   offsetSecondsSetting = docState.getNumberSetting("Offset (s)", "Time", -60, 60, 0.001, "", 0.0); // step resolution: 0.001 -> milliseconds precision
+   offsetSecondsSetting.markInterested();
+
+   loopSetting = docState.getBooleanSetting("Loop", "Time", false);
    loopSetting.markInterested();
 
    // add flush command to both the preferences and document state for easy access:
@@ -105,8 +128,12 @@ function init() {
 
 function flush() {
    updateOnTop(onTopSetting.get());
-   if (updateVideo(pathSetting.get()))
+   if (updateVideo(pathSetting.get())) {
       invalidateLastFrame();
+      invalidateLastFrameOffset();
+   }
+   let offsetSeconds = offsetSecondsSetting.getRaw() + 60 * offsetMinutesSetting.getRaw() + 3600 * offsetHoursSetting.getRaw();
+   updateFrameOffset(Math.floor(offsetSeconds * frameRateSetting.getRaw()));
    updateFrame(Math.floor(pos.get() * frameRateSetting.getRaw()));
    updateLoop(loopSetting.get());
 }
