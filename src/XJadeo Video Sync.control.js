@@ -36,10 +36,6 @@ function invalidateLastFrame() {
    lastFrame = -1;
 }
 function updateFrame(frame) {
-   if (oscConnection == null) {
-      invalidateLastFrame();
-      return;
-   }
    if (frame != lastFrame) {
       oscConnection.sendMessage("/jadeo/seek", frame);
       lastFrame = frame;
