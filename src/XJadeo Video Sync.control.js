@@ -18,6 +18,47 @@ function updateOnTop(onTop) {
    host.println("Sent 'Keep on top' state: " + (onTop ? "on" : "off"));
 }
 
+var lastOsdFlags;
+function invalidateLastTextDisplaySettings() {
+   lastOsdFlags = null;
+}
+let osdFlag_timeCode = 16;
+let osdFlag_frameNunber = 1;
+function updateTextDisplaySettings(timeDisplayMode) {
+   let osdFlags = 0; // no flag set
+   switch (timeDisplayMode) {
+      case  "Time code": // show VTC time code
+         osdFlags |= osdFlag_timeCode;
+         break;
+      case "Frame number": // show VTC frame number
+         osdFlags |= osdFlag_frameNunber;
+         break;
+      case "Off":
+         break; // no flag to set
+      default:
+         host.errorln("invalid timeDisplayMode!");
+         break;
+   }
+
+   // potential other osd flags:
+   // osdFlags |= 2; // show external time code
+   // osdFlags |= 4; // show text
+
+   if(osdFlags == lastOsdFlags)
+      return;
+   oscConnection.sendMessage("/jadeo/cmd", "osd mode " + osdFlags);
+   lastOsdFlags = osdFlags;
+
+   var timeDisplaySettingAsText;
+   if (osdFlags & osdFlag_timeCode)
+      timeDisplaySettingAsText = "Time code";
+   else if (osdFlags & osdFlag_frameNunber)
+      timeDisplaySettingAsText = "Frame number";
+   else
+      timeDisplaySettingAsText = "Off";
+   host.println("Sent 'Time display' setting: " + timeDisplaySettingAsText);
+}
+
 var lastVideoPath;
 function invalidateLastVideoPath() {
    lastVideoPath = null;
@@ -69,6 +110,7 @@ function updateLoop(loop) {
 
 function invalidateAll() {
    invalidateLastOnTopState();
+   invalidateLastTextDisplaySettings
    invalidateLastVideoPath();
    invalidateLastFrame();
    invalidateLastFrameOffset();
@@ -76,6 +118,7 @@ function invalidateAll() {
 }
 
 var onTopSetting;
+var timeDisplayModeSetting;
 var pathSetting;
 var frameRateSetting;
 var offsetHoursSetting;
@@ -91,6 +134,8 @@ function init() {
 
    onTopSetting = prefs.getBooleanSetting("Keep on top", "Video window", true);
    onTopSetting.markInterested();
+   timeDisplayModeSetting = prefs.getEnumSetting("Time display", "Video window", ["Off", "Time code", "Frame number"], "Off");
+   timeDisplayModeSetting.markInterested();
 
    let docState = host.getDocumentState();
 
@@ -129,6 +174,7 @@ function init() {
 
 function flush() {
    updateOnTop(onTopSetting.get());
+   updateTextDisplaySettings(timeDisplayModeSetting.get());
    if (updateVideo(pathSetting.get())) {
       invalidateLastFrame();
       invalidateLastFrameOffset();
@@ -142,4 +188,5 @@ function flush() {
 
 function exit() {
    updateVideo("");
+   updateTextDisplaySettings("");
 }
