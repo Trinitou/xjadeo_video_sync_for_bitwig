@@ -7,7 +7,7 @@
   - *Loop* check box for looped video playback
 - new controller script setting
     - *Time display* allows to activate a *Timecode* or *Frame number* text overlay on top of the video
-- link to the [github releases page](https://github.com/Trinitou/xjadeo_video_sync_for_bitwig/releases) in the help doc
+- link to the [github releases page](https://github.com/Trinitou/xjadeo_video_sync_for_bitwig/releases) ans [issues](https://github.com/Trinitou/xjadeo_video_sync_for_bitwig/issues) in the help doc
 
 # Changes in 0.1.1
 
