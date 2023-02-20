@@ -36,6 +36,4 @@
 
 If you want to see the recent feature additions and changes, please have a look into the [changelog](./doc/changelog.html).
 
-## Updates
-
-For newer versions of this script, please have a look at the [github repository](https://github.com/Trinitou/xjadeo_video_sync_for_bitwig/releases).
+For newer versions of this script, please look for updates at the [github repository](https://github.com/Trinitou/xjadeo_video_sync_for_bitwig/releases).
