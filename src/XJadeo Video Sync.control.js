@@ -107,7 +107,8 @@ function init() {
    offsetSecondsSetting = docState.getNumberSetting("Offset (s)", "Time", -60, 60, 0.001, "", 0.0); // step resolution: 0.001 -> milliseconds precision
    offsetSecondsSetting.markInterested();
 
-   loopSetting = docState.getBooleanSetting("Loop", "Time", false);
+   // loopSetting = docState.getBooleanSetting("Loop", "Time", false); // seemingly a bug in Bitwig Studio 4.4.8: Boolean settings not displayed in documentState, sent to support
+   loopSetting = docState.getEnumSetting("Loop", "Time", ["Off", "On"], "Off"); // workaround: enum setting
    loopSetting.markInterested();
 
    // add flush command to both the preferences and document state for easy access:
@@ -135,7 +136,8 @@ function flush() {
    let offsetSeconds = offsetSecondsSetting.getRaw() + 60 * offsetMinutesSetting.getRaw() + 3600 * offsetHoursSetting.getRaw();
    updateFrameOffset(Math.floor(offsetSeconds * frameRateSetting.getRaw()));
    updateFrame(Math.floor(pos.get() * frameRateSetting.getRaw()));
-   updateLoop(loopSetting.get());
+   // updateLoop(loopSetting.get()); // seemingly a bug in Bitwig Studio 4.4.8: Boolean settings not displayed in documentState, sent to support
+   updateLoop(loopSetting.get() === "On"); // workaround: enum setting
 }
 
 function exit() {
