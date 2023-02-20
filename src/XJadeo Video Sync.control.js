@@ -27,7 +27,7 @@ let osdFlag_frameNunber = 1;
 function updateTextDisplaySettings(timeDisplayMode) {
    let osdFlags = 0; // no flag set
    switch (timeDisplayMode) {
-      case  "Time code": // show VTC time code
+      case  "Timecode": // show VTC timecode
          osdFlags |= osdFlag_timeCode;
          break;
       case "Frame number": // show VTC frame number
@@ -41,7 +41,7 @@ function updateTextDisplaySettings(timeDisplayMode) {
    }
 
    // potential other osd flags:
-   // osdFlags |= 2; // show external time code
+   // osdFlags |= 2; // show external timecode
    // osdFlags |= 4; // show text
 
    if(osdFlags == lastOsdFlags)
@@ -51,7 +51,7 @@ function updateTextDisplaySettings(timeDisplayMode) {
 
    var timeDisplaySettingAsText;
    if (osdFlags & osdFlag_timeCode)
-      timeDisplaySettingAsText = "Time code";
+      timeDisplaySettingAsText = "Timecode";
    else if (osdFlags & osdFlag_frameNunber)
       timeDisplaySettingAsText = "Frame number";
    else
@@ -134,7 +134,7 @@ function init() {
 
    onTopSetting = prefs.getBooleanSetting("Keep on top", "Video window", true);
    onTopSetting.markInterested();
-   timeDisplayModeSetting = prefs.getEnumSetting("Time display", "Video window", ["Off", "Time code", "Frame number"], "Off");
+   timeDisplayModeSetting = prefs.getEnumSetting("Time display", "Video window", ["Off", "Timecode", "Frame number"], "Off");
    timeDisplayModeSetting.markInterested();
 
    let docState = host.getDocumentState();
