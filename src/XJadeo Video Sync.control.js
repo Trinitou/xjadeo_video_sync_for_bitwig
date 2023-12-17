@@ -185,7 +185,6 @@ function init() {
    println("XJadeo Video Sync initialized!");
 }
 
-// Modify the flush function
 function flush() {
    updateOnTop(onTopSetting.get());
    updateTextDisplaySettings(timeDisplayModeSetting.get());
@@ -202,8 +201,6 @@ function flush() {
    updateFrameOffset(Math.floor(offsetSeconds * frameRate));
    updateFrame(Math.floor(pos.get() * frameRate));
    updateLoop(loopSetting.get() === "On");
-
-   // Other flush actions as needed
 }
 
 function exit() {
