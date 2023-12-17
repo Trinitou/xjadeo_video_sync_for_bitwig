@@ -120,7 +120,9 @@ function invalidateAll() {
 var onTopSetting;
 var timeDisplayModeSetting;
 var pathSetting;
+var commonFrameRates = ["23.976", "24", "25", "29.97", "30", "50", "59.94", "60", "Custom"]; // Add more as needed
 var frameRateSetting;
+var customFrameRateSetting;
 var offsetHoursSetting;
 var offsetMinutesSetting;
 var offsetSecondsSetting;
@@ -142,8 +144,19 @@ function init() {
    pathSetting = docState.getStringSetting("Path", "File", 256, "");
    pathSetting.markInterested();
 
-   frameRateSetting = docState.getNumberSetting("FPS", "File", 24, 60, 0.01, "", 24);
+   frameRateSetting = docState.getEnumSetting("Frame Rate", "Video", commonFrameRates, "24");
    frameRateSetting.markInterested();
+
+   customFrameRateSetting = docState.getNumberSetting("Custom Frame Rate", "Video", 1, 120, 0.01, "", 24);
+   customFrameRateSetting.markInterested();
+
+   frameRateSetting.addValueObserver(function (value) {
+      if (value === "Custom") {
+         customFrameRateSetting.show();
+      } else {
+         customFrameRateSetting.hide();
+      }
+   });
 
    offsetHoursSetting = docState.getNumberSetting("Offset (h)", "Time", -24, 24, 1, "", 0.0);
    offsetHoursSetting.markInterested();
@@ -172,18 +185,25 @@ function init() {
    println("XJadeo Video Sync initialized!");
 }
 
+// Modify the flush function
 function flush() {
    updateOnTop(onTopSetting.get());
    updateTextDisplaySettings(timeDisplayModeSetting.get());
+
+   frameRate = frameRateSetting.get() === "Custom" ? customFrameRateSetting.getRaw() : frameRateSetting.get();
+   oscConnection.sendMessage("/jadeo/frame_rate", frameRate);
+
    if (updateVideo(pathSetting.get())) {
       invalidateLastFrame();
       invalidateLastFrameOffset();
    }
-   let offsetSeconds = offsetSecondsSetting.getRaw() + 60 * offsetMinutesSetting.getRaw() + 3600 * offsetHoursSetting.getRaw();
-   updateFrameOffset(Math.floor(offsetSeconds * frameRateSetting.getRaw()));
-   updateFrame(Math.floor(pos.get() * frameRateSetting.getRaw()));
-   // updateLoop(loopSetting.get()); // seemingly a bug in Bitwig Studio 4.4.8: Boolean settings not displayed in documentState, sent to support
-   updateLoop(loopSetting.get() === "On"); // workaround: enum setting
+
+   var offsetSeconds = offsetSecondsSetting.getRaw() + 60 * offsetMinutesSetting.getRaw() + 3600 * offsetHoursSetting.getRaw();
+   updateFrameOffset(Math.floor(offsetSeconds * frameRate));
+   updateFrame(Math.floor(pos.get() * frameRate));
+   updateLoop(loopSetting.get() === "On");
+
+   // Other flush actions as needed
 }
 
 function exit() {
