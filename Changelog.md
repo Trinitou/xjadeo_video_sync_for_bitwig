@@ -1,3 +1,10 @@
+# Changes in 0.3
+
+## Added
+
+- new *Frame Rate* setting offers a set of common frame rates + a *Custom* option 
+  - the old *FPS* setting should be transferred over to the new frame rate options after updating frm older versions of the script
+
 # Changes in 0.2
 
 ## Added
