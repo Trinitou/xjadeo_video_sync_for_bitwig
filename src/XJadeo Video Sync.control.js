@@ -146,10 +146,10 @@ function init() {
    pathSetting.markInterested();
 
    const frameRateOptions = ["23.976", "24", "25", "29.97", "30", "50", "59.94", "60", customFrameRateOption];
-   frameRateSetting = docState.getEnumSetting("Frame Rate", "Video", frameRateOptions, "24");
+   frameRateSetting = docState.getEnumSetting("Frame Rate", "File", frameRateOptions, "24");
    frameRateSetting.markInterested();
 
-   customFrameRateSetting = docState.getNumberSetting("Custom Frame Rate", "Video", 1, 120, 0.01, "", 24);
+   customFrameRateSetting = docState.getNumberSetting("Custom Frame Rate", "File", 1, 120, 0.01, "", 24);
    customFrameRateSetting.markInterested();
 
    offsetHoursSetting = docState.getNumberSetting("Offset (h)", "Time", -24, 24, 1, "", 0.0);
