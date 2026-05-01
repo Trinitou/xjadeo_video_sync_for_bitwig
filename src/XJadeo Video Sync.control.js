@@ -137,7 +137,7 @@ function handleLegacyFrameRateSetting()
 {
    legacyFrameRateSetting.hide(); // always hidden. Use .show() for debugging if necessary
    const legacyFrameRate = legacyFrameRateSetting.getRaw();
-   if (legacyFrameRate !== legacyFrameRateDefault)
+   if (legacyFrameRate !== legacyFrameRateDefault && legacyFrameRate !== 0)
    {
       const useOption = frameRateOptions.includes(legacyFrameRate.toString());
       frameRateSetting.set(useOption ? legacyFrameRate.toString() : customFrameRateOption);
