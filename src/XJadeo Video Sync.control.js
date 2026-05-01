@@ -129,6 +129,23 @@ var loopSetting;
 var pos;
 
 const customFrameRateOption = "Custom";
+const frameRateOptions = ["23.976", "24", "25", "29.97", "30", "50", "59.94", "60", customFrameRateOption];
+
+var legacyFrameRateSetting;
+const legacyFrameRateDefault = 24;
+function handleLegacyFrameRateSetting()
+{
+   legacyFrameRateSetting.hide(); // always hidden. Use .show() for debugging if necessary
+   const legacyFrameRate = legacyFrameRateSetting.getRaw();
+   if (legacyFrameRate !== legacyFrameRateDefault)
+   {
+      const useOption = frameRateOptions.includes(legacyFrameRate.toString());
+      frameRateSetting.set(useOption ? legacyFrameRate.toString() : customFrameRateOption);
+      customFrameRateSetting.setRaw(useOption ? legacyFrameRateDefault : legacyFrameRate);
+      legacyFrameRateSetting.setRaw(legacyFrameRateDefault);
+      println(`Transferred old legacy \"FPS\" setting (${legacyFrameRate}) over to new framerate options`);
+   }
+}
 
 function init() {
    oscConnection = host.getOscModule().connectToUdpServer("localhost", 12345, null);
@@ -145,7 +162,9 @@ function init() {
    pathSetting = docState.getStringSetting("Path", "File", 256, "");
    pathSetting.markInterested();
 
-   const frameRateOptions = ["23.976", "24", "25", "29.97", "30", "50", "59.94", "60", customFrameRateOption];
+   legacyFrameRateSetting = docState.getNumberSetting("FPS", "File", 24, 60, 0.01, "", legacyFrameRateDefault);
+   legacyFrameRateSetting.markInterested();
+
    frameRateSetting = docState.getEnumSetting("Frame Rate", "File", frameRateOptions, "24");
    frameRateSetting.markInterested();
 
@@ -183,6 +202,7 @@ function flush() {
    updateOnTop(onTopSetting.get());
    updateTextDisplaySettings(timeDisplayModeSetting.get());
 
+   handleLegacyFrameRateSetting();
    const useCustomFramerate = frameRateSetting.get() === customFrameRateOption;
    useCustomFramerate ? customFrameRateSetting.show() : customFrameRateSetting.hide();
    frameRate = useCustomFramerate ? customFrameRateSetting.getRaw() : frameRateSetting.get();
