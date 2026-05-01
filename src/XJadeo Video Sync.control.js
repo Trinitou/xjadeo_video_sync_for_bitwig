@@ -130,9 +130,9 @@ var pos;
 
 const customFrameRateOption = "Custom";
 
-function init() {   
+function init() {
    oscConnection = host.getOscModule().connectToUdpServer("localhost", 12345, null);
-   
+
    let prefs = host.getPreferences();
 
    onTopSetting = prefs.getBooleanSetting("Keep on top", "Video window", true);
@@ -193,7 +193,7 @@ function flush() {
       invalidateLastFrameOffset();
    }
 
-   var offsetSeconds = offsetSecondsSetting.getRaw() + 60 * offsetMinutesSetting.getRaw() + 3600 * offsetHoursSetting.getRaw();
+   const offsetSeconds = offsetSecondsSetting.getRaw() + 60 * offsetMinutesSetting.getRaw() + 3600 * offsetHoursSetting.getRaw();
    updateFrameOffset(Math.floor(offsetSeconds * frameRate));
    updateFrame(Math.floor(pos.get() * frameRate));
    updateLoop(loopSetting.get() === "On");
