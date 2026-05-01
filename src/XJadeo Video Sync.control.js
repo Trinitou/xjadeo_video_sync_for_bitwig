@@ -120,7 +120,6 @@ function invalidateAll() {
 var onTopSetting;
 var timeDisplayModeSetting;
 var pathSetting;
-var commonFrameRates = ["23.976", "24", "25", "29.97", "30", "50", "59.94", "60", "Custom"]; // Add more as needed
 var frameRateSetting;
 var customFrameRateSetting;
 var offsetHoursSetting;
@@ -128,6 +127,8 @@ var offsetMinutesSetting;
 var offsetSecondsSetting;
 var loopSetting;
 var pos;
+
+const customFrameRateOption = "Custom";
 
 function init() {   
    oscConnection = host.getOscModule().connectToUdpServer("localhost", 12345, null);
@@ -144,19 +145,12 @@ function init() {
    pathSetting = docState.getStringSetting("Path", "File", 256, "");
    pathSetting.markInterested();
 
-   frameRateSetting = docState.getEnumSetting("Frame Rate", "Video", commonFrameRates, "24");
+   const frameRateOptions = ["23.976", "24", "25", "29.97", "30", "50", "59.94", "60", customFrameRateOption];
+   frameRateSetting = docState.getEnumSetting("Frame Rate", "Video", frameRateOptions, "24");
    frameRateSetting.markInterested();
 
    customFrameRateSetting = docState.getNumberSetting("Custom Frame Rate", "Video", 1, 120, 0.01, "", 24);
    customFrameRateSetting.markInterested();
-
-   frameRateSetting.addValueObserver(function (value) {
-      if (value === "Custom") {
-         customFrameRateSetting.show();
-      } else {
-         customFrameRateSetting.hide();
-      }
-   });
 
    offsetHoursSetting = docState.getNumberSetting("Offset (h)", "Time", -24, 24, 1, "", 0.0);
    offsetHoursSetting.markInterested();
@@ -189,7 +183,9 @@ function flush() {
    updateOnTop(onTopSetting.get());
    updateTextDisplaySettings(timeDisplayModeSetting.get());
 
-   frameRate = frameRateSetting.get() === "Custom" ? customFrameRateSetting.getRaw() : frameRateSetting.get();
+   const useCustomFramerate = frameRateSetting.get() === customFrameRateOption;
+   useCustomFramerate ? customFrameRateSetting.show() : customFrameRateSetting.hide();
+   frameRate = useCustomFramerate ? customFrameRateSetting.getRaw() : frameRateSetting.get();
    oscConnection.sendMessage("/jadeo/frame_rate", frameRate);
 
    if (updateVideo(pathSetting.get())) {
