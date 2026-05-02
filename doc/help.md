@@ -12,7 +12,7 @@
 #### Linux
 
 1. Once: Install XJadeo, e.g. by running `sudo apt install xjadeo`
-2. Before every session, launch XJadeo via `xjadeo -O 12345` 
+2. Before every session, launch XJadeo via `xjadeo -O 12345`
 
 ### 2. Select a video file for playback for a Bitwig Studio project
 
