@@ -1,4 +1,4 @@
-# XJadeo Video Synchronization
+# XJadeo Video Sync
 
 ## Setup
 
