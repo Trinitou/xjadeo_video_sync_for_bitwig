@@ -1,0 +1,27 @@
+name: release
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - v*
+
+jobs:
+  Release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install pandoc
+        run: |
+          sudo apt install pandoc
+      - uses: actions/checkout@v2
+      - name: Build HTML Doc
+        run: |
+          mkdir -p target
+          pandoc -f markdown -t html doc/help.md -o target/help.html --metadata title="XJadeo Video Sync" --resource-path=doc --css=help.css --standalone --embed-resources
+      - name: Copy scripts
+        run: |
+          cp -a src/. target
+      - name: Show target files
+        run: |
+          ls -l target
