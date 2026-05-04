@@ -26,3 +26,7 @@ jobs:
       - name: Show target files
         run: |
           ls -l target
+      - uses: actions/upload-artifact@v7
+        with:
+          name: XJadeo_Video_Sync
+          path: target
