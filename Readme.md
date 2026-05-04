@@ -6,17 +6,13 @@ The implementation makes use of XJadeo's OSC remote control capabilities which a
 
 ## Installation
 
-1. Put the .js into the Bitwig controller script folder
-2. Add the controller script in Bitwig Studio
+1. Download the release ZIP from [here](https://github.com/Trinitou/xjadeo_video_sync_for_bitwig/releases/latest) and extract it into the Bitwig controller script folder
+3. Add the controller script in Bitwig Studio
     - via the Dashboard -> *Settings* -> *Controllers* -> *+ Add Controller*
     - select hardware vendor: *XJadeo*
     - select product: *XJadeo Video Sync*
     - click *Add*
-3. Click the *(?)* button and follow the setup instructions in the help HTML
-
-## Build
-
-Nothing to build for the controller script, but the help documentation HTML is generated from the [help.md](./doc/help.md) using the [generate_HTML.ps1](./doc/generate_HTML.ps1) script which requires Powershell 7 to work.
+4. Click the *(?)* button and follow the setup instructions in the help HTML
 
 ## Contribution
 
