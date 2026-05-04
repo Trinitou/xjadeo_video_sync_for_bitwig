@@ -2,27 +2,21 @@
 
 ## Setup
 
-### 1. Install and launch XJadeo
+1. Only once, install XJadeo on your machine
+   - Windows: Download and install XJadeo, e.g. from [here](https://xjadeo.sourceforge.net/download.html)
+   - Linux: run `sudo apt install xjadeo`
+1. Before every session, launch XJadeo via the provided script
+   - Windows: use the `launch XJadeo.bat` script
+   - Linux: run `bash launch-xjadeo.sh`
+1. Select a video file for playback for a Bitwig Studio project. In Bitwig Studio...
+   1. Open a project.
+   1. In the *Studio I/O panel*, unfold the *XJadeo Video Sync* settings.
+   1. Enter the absolute video file path under *Path*.
+   1. Enter the original frame rate of the video under *Frame Rate*.
 
-#### Windows
+Hint: XJadeo logs the original frame rate into the console:
 
-1. Only once: download and install XJadeo, e.g. from [here](https://xjadeo.sourceforge.net/download.html)
-1. Before every session, launch the `launch XJadeo.bat` script. This opens the XJadeo window.
-
-#### Linux
-
-1. Once: Install XJadeo, e.g. by running `sudo apt install xjadeo`
-2. Before every session, launch XJadeo via `xjadeo -O 12345`
-
-### 2. Select a video file for playback for a Bitwig Studio project
-
-In Bitwig Studio:
-
-1. Open a project.
-1. In the *Studio I/O panel*, unfold the *XJadeo Video Sync* settings.
-1. Enter the absolute video file path under *Path*.
-1. Enter the original frame rate of the video under *Frame Rate*.
-   - Hint: when loading the video, XJadeo will log the original frame rate into the console so just look it up there!
+![](resource/xjadeo-console-original-frame-rate.png)
 
 ## Features & Settings
 
@@ -40,12 +34,11 @@ In Bitwig Studio:
   - The *Keep on top* checkbox which will ensure that the video window stays in front of Bitwig Studio. (default: on)
   - The *Time display* setting allows you to activate a *Timecode* or *Frame number* text overlay on top of the video.
 
-## Tipps & tricks
+## How to import the original audio into Bitwig Studio
 
-- How to listen to the original sound of the video file in sync with the video?
-  - If Bitwig supports the file format, you can drag it into the project so that.
-    - Place it into the Arranger at position 1.1.1.00
-    - Make sure that time-stretching is off for that audio clip (*Mode* set to *Raw*)
+If Bitwig supports importing the video file format, you can drag the video into the project to play the original audio in sync with the video:
+- Place the clip into the Arranger at position 1.1.1.00
+- Make sure that time-stretching is off for that audio clip (*Mode* set to *Raw*)
 
 ## What's new?
 
