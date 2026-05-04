@@ -18,7 +18,7 @@ jobs:
       - name: Build HTML Doc
         run: |
           mkdir -p target
-          pandoc -f markdown -t html Changelog.md -o target/changelog.html --metadata pagetitle="Changelog" --css=doc/resource/help.css --standalone --embed-resources
+          pandoc -f markdown -t html Changelog.md -o target/changelog.html --metadata title="Changelog" --shift-heading-level-by=1 --css=doc/resource/help.css --standalone --embed-resources
           pandoc -f markdown -t html doc/help.md -o "target/XJadeo Video Sync.html" --metadata pagetitle="XJadeo Video Sync" --resource-path=doc --css=resource/help.css --standalone --embed-resources
       - name: Copy scripts
         run: |
