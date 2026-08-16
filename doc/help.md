@@ -3,16 +3,17 @@
 ## Setup
 
 1. Only once, install XJadeo on your machine
-   - Windows: Download and install XJadeo, e.g. from [here](https://xjadeo.sourceforge.net/download.html)
+   - Windows and MacOS: Download and install XJadeo, e.g. from [here](https://xjadeo.sourceforge.net/download.html)
    - Linux: run `sudo apt install xjadeo`
-1. Before every session, launch XJadeo via the provided script
+2. Before every session, launch XJadeo via the provided script
    - Windows: use the `launch XJadeo.bat` script
    - Linux: run `bash launch-xjadeo.sh`
-1. Select a video file for playback for a Bitwig Studio project. In Bitwig Studio...
+   - MacOS: click on the `launch-xjadeo.command` file to launch the script
+3. Select a video file for playback for a Bitwig Studio project. In Bitwig Studio...
    1. Open a project.
-   1. In the *Studio I/O panel*, unfold the *XJadeo Video Sync* settings.
-   1. Enter the absolute video file path under *Path*.
-   1. Enter the original frame rate of the video under *Frame Rate*.
+   2. In the *Studio I/O panel*, unfold the *XJadeo Video Sync* settings.
+   3. Enter the absolute video file path under *Path*.
+   4. Enter the original frame rate of the video under *Frame Rate*.
 
 Hint: XJadeo logs the original frame rate into the console:
 
