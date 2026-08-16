@@ -1,9 +1,15 @@
+# Changes in 1.0
+
+## Added
+
+- launch script and documentation for MacOS. Contributed by soulfish :)
+
 # Changes in 0.3
 
 ## Added
 
 - documentation on how to use the script on Linux
-- new *Frame Rate* setting offers a set of common frame rates + a *Custom* option 
+- new *Frame Rate* setting offers a set of common frame rates + a *Custom* option. Contributed by Vermoot :)
   - the old *FPS* setting should be transferred over to the new frame rate options after updating from older versions of the script
 
 # Changes in 0.2
@@ -15,7 +21,7 @@
   - *Loop* check box for looped video playback
 - new controller script setting
     - *Time display* allows to activate a *Timecode* or *Frame number* text overlay on top of the video
-- link to the [github releases page](https://github.com/Trinitou/xjadeo_video_sync_for_bitwig/releases) ans [issues](https://github.com/Trinitou/xjadeo_video_sync_for_bitwig/issues) in the help doc
+- link to the [github releases page](https://github.com/Trinitou/xjadeo_video_sync_for_bitwig/releases) and [issues](https://github.com/Trinitou/xjadeo_video_sync_for_bitwig/issues) in the help doc
 
 # Changes in 0.1.1
 
