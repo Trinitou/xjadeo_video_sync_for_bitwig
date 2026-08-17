@@ -1,12 +1,6 @@
 name: release
 on:
   workflow_dispatch:
-    inputs:
-      ref:
-        description: "Branch, tag, or commit SHA"
-        required: true
-        default: "main"
-        type: string
 
 jobs:
   Release:
